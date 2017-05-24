@@ -1,0 +1,15 @@
+#!/usr/bin/python3
+
+import re
+
+mem_info = open('/proc/meminfo', 'r').read()
+
+mem_total = int(re.findall('MemTotal:[ ]+([0-9]+) kB', mem_info, re.S)[0])/1024/1024
+mem_free = int(re.findall('MemAvailable:[ ]+([0-9]+) kB', mem_info, re.S)[0])/1024/1024
+mem_used = mem_total - mem_free
+
+print('  {0:.1f}'.format(mem_used) + '/' + '{0:.1f}'.format(mem_total) + ' GiB')
+print('  {0:.1f}'.format(mem_used) + ' GiB')
+
+if mem_used / mem_total > 0.9:
+	print('#ff3300')

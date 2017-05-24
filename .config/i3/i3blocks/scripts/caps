@@ -1,0 +1,6 @@
+#!/usr/bin/python3
+
+import re, subprocess
+
+if 'Caps Lock:   on' in subprocess.Popen(['xset', 'q'], stdout=subprocess.PIPE, universal_newlines=True).communicate()[0]:
+	print('CAPS')

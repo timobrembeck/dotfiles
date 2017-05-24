@@ -1,0 +1,15 @@
+#!/usr/bin/python3
+
+import re
+
+cpus = len(re.findall('model name', open('/proc/cpuinfo', 'r').read(), re.S))
+loadavgs = open('/proc/loadavg', 'r').read().split(' ')
+last_min = float(loadavgs[0]) / cpus * 100
+last_five_min = float(loadavgs[1]) / cpus * 100
+last_fifteen_mins = float(loadavgs[2]) / cpus * 100
+
+print(' {0:.1f}% / {1:.1f}% / {2:.1f}%'.format(last_min, last_five_min, last_fifteen_mins))
+print(' {0:.1f}%'.format(last_min))
+
+if last_fifteen_mins > 100:
+	print('#ff3300')

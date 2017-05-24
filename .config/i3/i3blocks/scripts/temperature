@@ -1,0 +1,25 @@
+#!/usr/bin/python3
+
+import os, re, subprocess
+
+instance = os.environ.get('BLOCK_INSTANCE')
+sensor = subprocess.Popen(['sensors', instance], stdout=subprocess.PIPE).communicate()[0].decode('utf8')
+temperature_str = re.findall('([0-9\.]+)°C', sensor, re.S)[0]
+temperature = float(temperature_str)
+
+if temperature < 30:
+	icon = ''
+elif temperature < 45:
+	icon = ''
+elif temperature < 60:
+	icon = ''
+elif temperature < 75:
+	icon = ''
+else:
+	icon = ''
+
+print(icon + ' ' + temperature_str + '°C')
+print(icon + ' ' + temperature_str + '°C')
+
+if temperature > 75:
+	print('ff3300')

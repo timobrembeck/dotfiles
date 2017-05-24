@@ -1,0 +1,29 @@
+#!/bin/bash
+
+backlight="$(xbacklight)"
+
+if ! [ -z "$@" ]
+	then
+		if [ "$@" == "inc" ]
+			then
+				if [ "${backlight%.*}" -le 15 ]
+					then
+						xbacklight -inc 3
+					else
+						xbacklight -inc 10
+				fi
+		elif [ "$@" == "dec" ]
+			then
+				if [ "${backlight%.*}" -le 3 ]
+					then
+						xbacklight -set 1
+				elif [ "${backlight%.*}" -le 15 ]
+					then
+						xbacklight -dec 3
+					else
+						xbacklight -dec 10
+				fi
+		fi
+	else
+		xbacklight -set 30
+fi

@@ -1,0 +1,43 @@
+#!/bin/bash
+
+status="$(playerctl status)" || exit 0
+
+if [ $BLOCK_INSTANCE = 'previous' ]
+	then
+		if [ $BLOCK_BUTTON = 1 ]
+		  then
+			playerctl previous
+		fi
+		echo ""
+elif  [ $BLOCK_INSTANCE = 'play' ]
+	then
+		if [ $BLOCK_BUTTON = 1 ]
+		  then
+			playerctl play && pkill -SIGRTMIN+10 i3blocks
+		fi
+		if [ $status == Playing ]
+			then
+				echo ""
+			else
+				echo ""
+		fi
+elif  [ $BLOCK_INSTANCE = 'pause' ]
+	then
+		if [ $BLOCK_BUTTON = 1 ]
+		  then
+			playerctl pause && pkill -SIGRTMIN+10 i3blocks
+		fi
+		if [ $status == Paused ]
+			then
+				echo ""
+			else
+				echo ""
+		fi
+elif  [ $BLOCK_INSTANCE = 'next' ]
+	then
+		if [ $BLOCK_BUTTON = 1 ]
+		  then
+			playerctl next
+		fi
+		echo ""
+fi

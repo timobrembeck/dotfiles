@@ -1,0 +1,39 @@
+#!/usr/bin/python3
+
+import os, re, subprocess, sys
+
+battery = subprocess.Popen(['acpi', '-b'], stdout=subprocess.PIPE).communicate()[0].decode('utf8')
+
+percent = int(re.findall('([0-9]+)%', battery, re.S)[0])
+
+list = re.findall('([0-9]:[0-9]):[0-9]', battery, re.S)
+remaining = ' ' + list[0] + 'h' if list != [] else ''
+
+if percent < 20:
+	icon = ''
+elif percent < 40:
+	icon = ''
+elif percent < 60:
+	icon = ''
+elif percent < 80:
+	icon = ''
+else:
+	icon = ''
+
+plug = ' ' if "Charging" in battery or 'on-line' in subprocess.Popen(['acpi', '-a'], stdout=subprocess.PIPE).communicate()[0].decode('utf8') else ''
+
+print(icon + ' ' + str(percent) + '%' + plug + remaining)
+print(icon + ' ' + str(percent) + '%' + plug)
+
+if 'Discharging' in battery:
+	if percent < 20:
+		print('#ff3300')
+	elif percent < 40:
+		print('#ff6600')
+	elif percent < 60:
+		print('#ffff66')
+	else:
+		print('#66ccff')
+else:
+	print('#66ff99')
+

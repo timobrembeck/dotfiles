@@ -1,0 +1,33 @@
+#!/usr/bin/python3
+
+import imaplib, json, keyring, os, re, subprocess
+
+try:
+	if os.environ['BLOCK_BUTTON'] == '1':
+		subprocess.Popen(['thunderbird'], stdout=open(os.devnull, 'w'))
+except KeyError:
+	pass
+
+instance = os.environ['BLOCK_INSTANCE']
+
+config = json.loads(open(os.environ['HOME'] + '/.config/i3/i3blocks/scripts/email.config', 'r').read())[instance]
+
+try:
+	username = config['username']
+except KeyError:
+	username = config['address']
+
+unread_mails = 0
+
+box = imaplib.IMAP4_SSL(host=config['server'])
+box.login(username, keyring.get_password('i3blocks-email', config['address']))
+result, folders = box.list()
+for folder in folders:
+	box.select(re.findall(b'"[/|\.]" (.+)', folder)[0], True)
+	result, ids = box.search(None, 'UNSEEN')
+	unread_mails += len(ids[0].split())
+box.logout()
+
+if unread_mails > 0:
+	print(' ' + str(unread_mails) + ' (' + config['address'] + ')')
+	print(' ' + str(unread_mails) + ' (' + instance + ')')

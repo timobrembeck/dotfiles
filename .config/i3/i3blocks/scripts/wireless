@@ -1,0 +1,23 @@
+#!/usr/bin/python3
+
+import os, re, subprocess
+
+instance = os.environ.get('BLOCK_INSTANCE')
+result = subprocess.Popen(['iw', 'dev', instance, 'link'], stdout=subprocess.PIPE).communicate()[0].decode('utf8')
+
+if 'Connected to' in result:
+	ssid = re.findall('SSID: (.*?)\n', result, re.S)[0]
+	signal = int(re.findall('signal: (.*?) dBm', result, re.S)[0])
+	
+	# sloppy conversion of dBm to %
+	if signal < -93:
+		percent = 1
+	elif signal < -50:
+		percent = signal * 1.8 + 170
+	elif signal < -20:
+		percent = signal * 0.66 + 113
+	else:
+		percent = 100
+	
+	print('  {0:.0f}'.format(percent) + '% (' + ssid + ')')
+	print('  {0:.0f}'.format(percent) + '%')

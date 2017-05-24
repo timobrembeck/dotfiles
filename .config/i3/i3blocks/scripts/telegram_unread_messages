@@ -1,0 +1,8 @@
+#!/usr/bin/python3
+
+import re, subprocess
+
+dialog_list = subprocess.Popen(['telegram-cli', '-e', 'dialog_list'], stdout=subprocess.PIPE, universal_newlines=True).communicate()[0]
+unread_messages_list = re.findall('([1-9]+) unread', dialog_list, re.S)
+unread_messages = sum(int(i) for i in unread_messages_list)
+print(str(unread_messages))

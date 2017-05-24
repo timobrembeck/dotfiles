@@ -1,0 +1,17 @@
+#!/bin/bash
+
+if [ $BLOCK_BUTTON = 1 ]
+  then
+	telegram-desktop &> /dev/null
+fi
+
+unread=$($HOME/.config/i3/i3blocks/scripts/telegram_unread_messages)
+
+if [ $unread = "0" ]
+	then
+		echo ""
+	else
+		echo " $unread"
+		echo " $unread"
+		echo "#66ccff"
+fi
