@@ -24,6 +24,7 @@ alias xmod='chmod +x'
 
 # synergy
 alias synergyc='ssh -N -f -L 24800:localhost:24800 timo-pc && synergyc localhost'
+alias synergyc-ssh='sudo systemctl start sshd.socket && ssh -N -f -L 24800:localhost:24800 timo-pc && synergyc localhost'
 
 # power management
 alias i3lock-blur='/home/timo/.config/i3/i3lock.sh'
