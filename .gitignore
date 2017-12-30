@@ -1,14 +1,1 @@
-# Ignore everything
-/*
-# Un-ignore
-!.gitignore
-!.gitmodules
-!.yaourtrc
-!.bash_aliases
-!.bash_profile
-!.bashrc
-!.zprofile
-!.zshrc
-!/.config/i3/
-# Ignore
 .config/i3/i3autoname/__pycache__/
