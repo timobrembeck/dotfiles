@@ -4,7 +4,7 @@
 export TERM="xterm-256color"
 
 # Path to your oh-my-zsh installation.
-  export ZSH=$HOME/.oh-my-zsh
+export ZSH=$HOME/.oh-my-zsh
 
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
@@ -109,9 +109,47 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
+export VISUAL="nano"
+
+# programs
+alias chromium='chromium --password-store=basic'
+alias spotify='spotify --force-device-scale-factor=2'
+
+# cd
+alias ..="cd .."
+alias cd..="cd .."
+alias ...="cd ../.."
+alias ....="cd ../../.."
+alias .....="cd ../../../.."
+
+# ls
 alias ls='ls --color=auto'
-alias i3lock-blur='/home/timo/.config/i3/i3lock.sh'
-alias suspend='i3lock-blur && systemctl suspend'
+alias ll='ls -la'
+alias ll='ls -ltra'
+alias l.='ls -d .*'
+
+# mv, rm, cp
+alias mv='mv -v'
+alias rm='rm -v'
+alias cp='cp -v'
+
+# cat
+alias cat="ccat --bg='dark' -G String='yellow'"
+
+# chmod
+alias xmod='chmod +x'
+
+# synergy
+alias synergyc='ssh -N -f -L 24800:localhost:24800 timo-pc && synergyc localhost'
 alias synergyc-ssh='sudo systemctl start sshd.socket && ssh -N -f -L 24800:localhost:24800 timo-pc && synergyc localhost'
 
-export VISUAL="nano"
+# power management
+alias i3lock-blur='/home/timo/.config/i3/i3lock.sh'
+alias suspend='i3lock-blur && systemctl suspend'
+
+# updates
+alias update='sudo pacman -Syu && yaourt -Syua'
+
+# ip address
+alias ip="dig +short myip.opendns.com @resolver1.opendns.com"
+
