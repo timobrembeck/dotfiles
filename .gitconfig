@@ -1,6 +1,6 @@
 [user]
-	name = timoludwig
-	email = ti.ludwig@web.de
 	name = Timo Ludwig
+	username = timoludwig
+	email = ti.ludwig@web.de
 [credential]
 	helper = cache --timeout=7200
