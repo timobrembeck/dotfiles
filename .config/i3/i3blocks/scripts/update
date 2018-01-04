@@ -5,5 +5,5 @@ aur=$(yaourt -Qau | grep aur/ | wc -l)
 
 if [ $arch -ge 1 ] || [ $aur -ge 1 ]
 	then
-		echo " $arch / $aur"
+		echo " $arch/$aur"
 fi
