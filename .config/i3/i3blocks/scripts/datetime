@@ -7,8 +7,10 @@ import os, re, subprocess, locale, datetime
 
 try:
     if os.environ['BLOCK_BUTTON'] == '1':
-        subprocess.Popen(['gnome-clocks'], stdout=open(os.devnull, 'w'))
-        subprocess.Popen(['gnome-clocks'], stdout=open(os.devnull, 'w'))
+        if os.environ['BLOCK_INSTANCE'] == 'time':
+            subprocess.Popen(['gnome-clocks'], stdout=open(os.devnull, 'w'))
+        elif os.environ['BLOCK_INSTANCE'] == 'date':
+            subprocess.Popen(['gnome-calendar'], stdout=open(os.devnull, 'w'))
 except KeyError:
     pass
 
