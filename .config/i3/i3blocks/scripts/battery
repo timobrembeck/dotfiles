@@ -1,4 +1,5 @@
 #!/usr/bin/python3
+# -*- coding: utf-8 -*-
 
 import os, re, subprocess, sys
 
@@ -6,7 +7,7 @@ battery = subprocess.Popen(['acpi', '-b'], stdout=subprocess.PIPE).communicate()
 
 percent = int(re.findall('([0-9]+)%', battery, re.S)[0])
 
-list = re.findall('([0-9]:[0-9]):[0-9]', battery, re.S)
+list = re.findall('([0-9]{2}:[0-9]{2}):[0-9]{2}', battery, re.S)
 remaining = ' ' + list[0] + 'h' if list != [] else ''
 
 if percent < 20:

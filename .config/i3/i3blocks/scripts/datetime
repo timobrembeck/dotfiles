@@ -1,0 +1,26 @@
+#!/usr/bin/python3
+# -*- coding: utf-8 -*-
+# used icons: \uf017 = , \uf073 = 
+
+
+import os, re, subprocess, locale, datetime
+
+try:
+    if os.environ['BLOCK_BUTTON'] == '1':
+        if os.environ['BLOCK_INSTANCE'] == 'time':
+            subprocess.Popen(['gnome-clocks'], stdout=open(os.devnull, 'w'))
+        elif os.environ['BLOCK_INSTANCE'] == 'date':
+            subprocess.Popen(['gnome-calendar'], stdout=open(os.devnull, 'w'))
+except KeyError:
+    pass
+
+try:
+    if os.environ['BLOCK_INSTANCE'] == 'time':
+        print('\uf017 ' + datetime.datetime.now().strftime('%H:%M:%S'))
+        print('\uf017 ' + datetime.datetime.now().strftime('%H:%M'))
+    elif os.environ['BLOCK_INSTANCE'] == 'date':
+        locale.setlocale(locale.LC_TIME,'')
+        print('\uf073 ' + datetime.datetime.now().strftime('%a, %d.%m.%Y'))
+        print('\uf073 ' + datetime.datetime.now().strftime('%d.%m.%Y'))
+except KeyError:
+    print('No instance defined (set the environ-variable BLOCK_INSTANCE to date or time).')
