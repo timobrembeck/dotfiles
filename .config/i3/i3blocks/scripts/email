@@ -24,6 +24,9 @@ box = imaplib.IMAP4_SSL(host=config['server'])
 box.login(username, keyring.get_password('i3blocks-email', config['address']))
 result, folders = box.list()
 for folder in folders:
+	# exclude [Gmail] folder
+	if b'[Gmail]' in folder:
+		break
 	box.select(re.findall(b'"[/|\.]" (.+)', folder)[0], True)
 	result, ids = box.search(None, 'UNSEEN')
 	unread_mails += len(ids[0].split())
