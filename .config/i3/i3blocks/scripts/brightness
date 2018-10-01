@@ -1,0 +1,11 @@
+#!/bin/bash
+
+case $BLOCK_BUTTON in
+  1) xbacklight -set 1 ;;  # left click, set dark
+  3) xbacklight -set 100 ;;  # right click, set bright
+  4) ~/.config/i3/scripts/backlight inc ;; # scroll up, increase
+  5) ~/.config/i3/scripts/backlight dec ;; # scroll down, decrease
+esac
+
+brightness="$(xbacklight)"
+echo " ${brightness%.*}%"
