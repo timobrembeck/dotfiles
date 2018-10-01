@@ -35,7 +35,7 @@ alias i3lock-blur='/home/timo/.config/i3/i3lock.sh'
 alias suspend='i3lock-blur && systemctl suspend'
 
 # updates
-alias update='sudo pacman -Syu && yaourt -Syua'
+alias update='sudo pacman -Syu && pikaur -Syua'
 
 # ip address
 alias ip="dig +short myip.opendns.com @resolver1.opendns.com"
