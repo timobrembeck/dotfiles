@@ -17,6 +17,7 @@ exec_always --no-startup-id nitrogen --restore
 exec --no-startup-id i3-msg 'workspace 1; exec --no-startup-id termite;'
 #exec_always --no-startup-id i3-msg 'workspace 2; exec --no-startup-id firefox; workspace 1'
 #exec_always --no-startup-id i3-msg 'workspace 3; exec --no-startup-id thunderbird; workspace 1'
+exec --no-startup-id slack
 exec --no-startup-id telegram-desktop -startintray
 exec --no-startup-id nm-applet
 
