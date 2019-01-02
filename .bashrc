@@ -7,6 +7,6 @@ BROWSER=/usr/bin/firefox
 EDITOR=/usr/bin/nano
 
 # Aliases
-if [ -f ~/.bash_aliases ]; then
-        . ~/.bash_aliases
+if [ -f ~/.aliases ]; then
+        . ~/.aliases
 fi
