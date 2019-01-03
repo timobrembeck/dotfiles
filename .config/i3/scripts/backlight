@@ -6,7 +6,7 @@ if ! [ -z "$@" ]
 	then
 		if [ "$@" == "inc" ]
 			then
-				if [ "${backlight%.*}" -le 15 ]
+				if [ "${backlight%.*}" -lt 15 ]
 					then
 						xbacklight -inc 3
 					else
