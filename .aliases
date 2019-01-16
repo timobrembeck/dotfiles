@@ -40,3 +40,6 @@ alias update='sudo pacman -Syu && aurman -Syu'
 alias ipa="dig +short myip.opendns.com @resolver1.opendns.com"
 
 #alias python='python2'
+
+# password generator
+alias pwgen='pwgen -cnys'
