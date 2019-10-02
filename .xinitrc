@@ -36,5 +36,6 @@ fi
 
 export TERMINAL="termite"
 
+setxkbmap de
 xrandr --dpi 157
 exec i3
