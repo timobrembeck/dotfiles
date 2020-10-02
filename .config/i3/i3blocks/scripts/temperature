@@ -23,4 +23,4 @@ print(icon + ' ' + temperature_str + '°C')
 print(icon + ' ' + temperature_str + '°C')
 
 if temperature > 75:
-	print('ff3300')
+	print('#ff3300')
