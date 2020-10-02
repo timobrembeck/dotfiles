@@ -43,3 +43,6 @@ alias ipa="dig +short myip.opendns.com @resolver1.opendns.com"
 
 # password generator
 alias pwgen='pwgen -cnys'
+
+# history with grep
+alias hist='history | grep'
