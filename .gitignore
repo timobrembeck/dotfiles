@@ -1,5 +1,6 @@
 .idea
 *.iml
 .config/i3/i3autoname/__pycache__/
+.config/i3/i3blocks/core.*
 .config/i3/i3blocks/scripts/email.config
 .config/i3/i3lock/lockscreen.png
