@@ -25,6 +25,9 @@ alias cat="ccat --bg='dark' -G String='yellow'"
 # chmod
 alias xmod='chmod +x'
 
+# git
+alias rebase='git rebase --interactive $(git merge-base --fork-point develop $(git rev-parse --abbrev-ref HEAD))'
+
 # synergy
 alias synergyc-ssh='ssh -N -f -L 24600:localhost:24600 timo-pc && synergyc localhost'
 #alias synergyc-ssh='sudo systemctl start sshd.socket && ssh -N -f -L 24600:localhost:24600 timo-pc && synergyc localhost'
@@ -43,6 +46,3 @@ alias ipa="dig +short myip.opendns.com @resolver1.opendns.com"
 
 # password generator
 alias pwgen='pwgen -cnys'
-
-# history with grep
-alias hist='history | grep'
